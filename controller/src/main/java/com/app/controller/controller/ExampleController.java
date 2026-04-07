@@ -73,6 +73,10 @@ public class ExampleController {
         return "ex06";
     }
 
+    @GetMapping("ex06-complete")
+    public String ex06Complete(@ModelAttribute("memberName") String memberName){
+        return "ex06-complete";
+    }
 
 //    회원가입 완료 후
 //    페이지에 000님 환영합니다 출력
@@ -81,12 +85,8 @@ public class ExampleController {
 //        응답이 들어오는지 먼저 확인하는 QA
 //        log.info("응답이 들어옴");
         log.info("memberVO: {}", memberVO);
-        return "redirect:/ex/ex06-complete?memberName=" + memberVO.getMemberName();
-    }
-
-    @GetMapping("ex06-complete")
-    public String ex06Complete(@ModelAttribute("memberName") String memberName){
-        return "ex06-complete";
+//        return "redirect:/ex/ex06-complete?memberName=" + memberVO.getMemberName();
+        return "redirect:/ex/ex06-complete";
     }
 
 }

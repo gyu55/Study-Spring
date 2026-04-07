@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Optional;
+
 @Slf4j
 @SpringBootTest
 public class MemberMapperTests {
@@ -21,5 +23,15 @@ public class MemberMapperTests {
         memberVO.setMemberPassword("1234");
         memberVO.setMemberName("김영희");
         memberMapper.insert(memberVO);
+    }
+
+    @Test
+    public void memberSelectTest(){
+        MemberVO memberVO = new MemberVO();
+        memberVO.setMemberEmail("test8888@gmail.com");
+        memberVO.setMemberPassword("1234");
+        memberVO.setMemberName("김영희");
+        Optional<MemberVO> foundMember = memberMapper.selectByMemberEmailAndMemberPassword(memberVO);
+        log.info("foundMember: {}", foundMember);
     }
 }

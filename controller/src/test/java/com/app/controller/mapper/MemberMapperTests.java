@@ -10,9 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 @Slf4j
 @SpringBootTest
 public class MemberMapperTests {
+
     @Autowired
     private MemberMapper memberMapper;
-
 
     @Test
     public void memberInsertTest(){

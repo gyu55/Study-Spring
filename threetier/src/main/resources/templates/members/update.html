@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>회원 수정</title>
+</head>
+<body>
+<form th:action="@{/members/update}" method="post">
+    <input type="hidden" name="id" th:value="${session.member.id}">
+
+    <label>이메일</label>
+    <input type="email" name="memberEmail" th:value="${session.member.memberEmail}">
+    <br>
+
+    <label>이름</label>
+    <input type="text" name="memberName" th:value="${session.member.memberName}">
+    <br>
+
+    <label>비밀번호</label>
+    <input type="password" name="memberPassword">
+    <br>
+
+    <button type="submit">수정 완료</button>
+</form>
+</body>
+</html>

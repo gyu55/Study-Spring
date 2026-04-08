@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/posts/*")
 @RequiredArgsConstructor
 public class PostController {
+
     private final PostMapper postMapper;
 
     @GetMapping("/list")
     public void goToList(Model model) {
-        model.addAttribute("posts", postMapper.findAll());
+        model.addAttribute("posts", postMapper.selectAll());
     }
 }

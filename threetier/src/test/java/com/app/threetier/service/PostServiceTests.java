@@ -1,6 +1,7 @@
 package com.app.threetier.service;
 
 import com.app.threetier.domain.dto.PostDTO;
+import com.app.threetier.domain.vo.PostVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +24,11 @@ public class PostServiceTests {
     @Test
     void updatePostTest() {
         PostDTO postDTO = new PostDTO();
-        postDTO.setId(2L);
+        PostVO postVO = new PostVO();
+        postDTO.setId(4L);
         postDTO.setPostTitle("testTitle");
         postDTO.setPostContent("testContent");
-        postService.updatePost(postDTO);
+        postService.updatePost(postVO);
     }
 
     @Test

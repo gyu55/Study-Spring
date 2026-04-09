@@ -1,6 +1,7 @@
 package com.app.threetier.service;
 
 import com.app.threetier.domain.dto.PostDTO;
+import com.app.threetier.domain.vo.PostVO;
 import com.app.threetier.exception.PostException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,12 +31,18 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public PostDTO getPost(Long id) {
+        this.increaseReadCount(id);
         return postDAO.findById(id).orElseThrow(() -> new PostException("게시물을 찾을 수 없습니다."));
     }
 
     @Override
-    public void updatePost(PostDTO postDTO) {
-        postDAO.update(postDTO);
+    public void updatePost(PostVO postVO) {
+        postDAO.update(postVO);
+    }
+
+    @Override
+    public void increaseReadCount(Long id) {
+        postDAO.updateReadCount(id);
     }
 
     @Override

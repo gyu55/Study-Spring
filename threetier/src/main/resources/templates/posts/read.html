@@ -12,11 +12,14 @@
         <p th:text="*{postTitle}"></p>
         <p th:text="*{postContent}"></p>
         <p th:text="*{memberName}"></p>
+        <p th:text="'조회 수:' + *{postReadCount}"></p>
     </th:block>
-    <a th:href="@{/posts/update(id=${post.id})}">
+<!--    수정은 페이지 이동이라 window.location 추천
+    <button th:onclick="@{window.location.href='/posts/update(id=*{id})'}"-->
+    <a th:href="@{/posts/update(id=*{post.id})}">
         <button>게시글 수정</button>
     </a>
-    <a th:href="@{/posts/delete(id=${post.id})}">
+    <a th:href="@{/posts/delete-ok(id=*{post.id})}">
         <button>게시글 삭제</button>
     </a>
 </body>

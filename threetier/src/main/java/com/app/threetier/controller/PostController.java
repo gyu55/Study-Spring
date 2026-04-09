@@ -1,6 +1,7 @@
 package com.app.threetier.controller;
 
 import com.app.threetier.domain.dto.PostDTO;
+import com.app.threetier.domain.vo.PostVO;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.app.threetier.service.PostService;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping("/posts/*")
@@ -33,16 +35,17 @@ public class PostController {
     public void goToUpdate(Long id, Model model) {
         model.addAttribute("post", postService.getPost(id));
     }
-    @PostMapping("/update")
-    public String update(PostDTO postDTO) {
-        postService.updatePost(postDTO);
-        return "redirect:/posts/read?id=" + postDTO.getId();
+
+    @PostMapping("/update-ok")
+    public RedirectView updateOk(PostVO postVO) {
+        postService.updatePost(postVO);
+        return new RedirectView("/posts/read?id=" + postVO.getId());
     }
 
-    @GetMapping("/delete")
-    public String goToDelete(Long id) {
+    @GetMapping("/delete-ok")
+    public RedirectView goToDelete(Long id) {
         postService.deletePost(id);
-        return "redirect:/posts/list";
+        return new RedirectView("/posts/list");
     }
 
 }

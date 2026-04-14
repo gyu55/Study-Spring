@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.app.restful.mapper.MemberMapper">
+
     <insert id="insert" parameterType="MemberVO">
+        <selectKey keyProperty="id" resultType="Long" order="BEFORE">
+            SELECT SEQ_MEMBER.NEXTVAL FROM DUAL
+        </selectKey>
         INSERT INTO TBL_MEMBER
-        VALUES(SEQ_MEMBER.NEXTVAL, #{memberEmail}, #{memberPassword}, #{memberName})
+        VALUES (#{id}, #{memberEmail}, #{memberPassword}, #{memberName})
     </insert>
 
     <select id="selectByMemberEmailAndMemberPassword" parameterType="MemberVO" resultType="MemberVO">
@@ -11,6 +15,12 @@
         FROM TBL_MEMBER
         WHERE MEMBER_EMAIL = #{memberEmail}
             AND MEMBER_PASSWORD = #{memberPassword}
+    </select>
+
+    <select id="existMemberEmail" parameterType="String" resultType="int">
+        SELECT COUNT(*)
+        FROM TBL_MEMBER
+        WHERE MEMBER_EMAIL = #{memberEmail}
     </select>
 
     <select id="selectById" parameterType="Long" resultType="MemberVO">
@@ -26,8 +36,7 @@
 
     <update id="update" parameterType="MemberVO">
         UPDATE TBL_MEMBER
-        SET MEMBER_EMAIL = #{memberEmail},
-            MEMBER_PASSWORD = #{memberPassword},
+        SET MEMBER_PASSWORD = #{memberPassword},
             MEMBER_NAME = #{memberName}
         WHERE ID = #{id}
     </update>

@@ -18,9 +18,6 @@ public class PostResponseDTO {
     @Schema(description = "게시글 내용", required = true, example = "테스트 게시글 내용123!@#")
     private String postContent;
 
-    @Schema(description = "회원 번호", required = true, example = "1")
-    private Long memberId;
-
     @Schema(description = "게시글 조회수", required = true, example = "1")
     private Long postReadCount;
 
@@ -35,7 +32,6 @@ public class PostResponseDTO {
         postResponseDTO.setId(postDTO.getId());
         postResponseDTO.setPostTitle(postDTO.getPostTitle());
         postResponseDTO.setPostContent(postDTO.getPostContent());
-        postResponseDTO.setMemberId(postDTO.getMemberId());
         postResponseDTO.setPostReadCount(postDTO.getPostReadCount());
         postResponseDTO.setMemberEmail(postDTO.getMemberEmail());
         postResponseDTO.setMemberName(postDTO.getMemberName());

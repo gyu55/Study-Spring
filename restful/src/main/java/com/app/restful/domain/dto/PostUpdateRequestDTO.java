@@ -1,16 +1,13 @@
-package com.app.restful.domain.vo;
+package com.app.restful.domain.dto;
+
 
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
-import java.io.Serializable;
-
 @Component
 @Data
-public class PostVO implements Serializable {
+public class PostUpdateRequestDTO {
     private Long id;
     private String postTitle;
     private String postContent;
-    private Long memberId;
-    private Long postReadCount;
 }

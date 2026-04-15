@@ -94,7 +94,7 @@ public class MemberAPI {
             example = "1",
             schema = @Schema(type = "number")
     )
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteMember(@PathVariable Long id){
         memberService.deleteMember(id);
     }

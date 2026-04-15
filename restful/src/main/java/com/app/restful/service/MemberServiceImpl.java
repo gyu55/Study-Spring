@@ -3,10 +3,12 @@ package com.app.restful.service;
 import com.app.restful.domain.dto.MemberJoinRequestDTO;
 import com.app.restful.domain.dto.MemberResponseDTO;
 import com.app.restful.domain.dto.MemberUpdateRequestDTO;
+import com.app.restful.domain.dto.PostDTO;
 import com.app.restful.domain.vo.MemberVO;
 import com.app.restful.exception.LoginException;
 import com.app.restful.exception.MemberException;
 import com.app.restful.repository.MemberDAO;
+import com.app.restful.repository.PostDAO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +22,7 @@ import java.util.Optional;
 public class MemberServiceImpl implements MemberService {
 
     private final MemberDAO memberDAO;
+    private final PostDAO postDAO;
 
     @Override
     public void join(MemberJoinRequestDTO memberJoinRequestDTO) {
@@ -78,6 +81,7 @@ public class MemberServiceImpl implements MemberService {
 //    회원 정보 삭제
     @Override
     public void deleteMember(Long id){
+        postDAO.deleteByMemberId(id);
         memberDAO.delete(id);
     }
 

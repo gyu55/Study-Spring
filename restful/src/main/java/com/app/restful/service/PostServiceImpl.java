@@ -6,6 +6,7 @@ import com.app.restful.exception.MemberException;
 import com.app.restful.exception.PostException;
 import com.app.restful.repository.PostDAO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,7 +29,7 @@ public class PostServiceImpl implements PostService {
         postDAO.updateReadCount(id);
         return postDAO.findById(id)
                 .map(PostResponseDTO::from)
-                .orElseThrow(()->{throw new PostException("게시글을 찾을 수 없습니다.");});
+                .orElseThrow(()->{throw new PostException("게시글을 찾을 수 없습니다.", HttpStatus.NOT_FOUND);});
     }
 
     @Override

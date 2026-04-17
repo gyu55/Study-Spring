@@ -20,8 +20,8 @@ const MemberList = () => {
     getMemberList()
   }, [])
 
-  const memberNames = memberList.map(({memberName}, i) => (
-    <li key={i}>{memberName}</li>
+  const memberNames = memberList.map(({id, memberName}, i) => (
+    <li key={i}><Link to={`/members/member-info/${id}`}>{memberName}</Link></li>
   ))
 
   // fetch('http://localhost:10000/api/members')

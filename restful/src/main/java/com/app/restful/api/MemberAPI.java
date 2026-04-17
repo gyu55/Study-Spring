@@ -121,7 +121,7 @@ public class MemberAPI {
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponseDTO> withdraw(@PathVariable Long id){
         memberService.deleteMember(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(ApiResponseDTO.of("회원 탈퇴 완료"));
+        return ResponseEntity.status(HttpStatus.OK).body(ApiResponseDTO.of("회원 탈퇴 완료"));
     }
 
 }

@@ -43,7 +43,7 @@ public class PostAPI {
     @ApiResponse(responseCode = "200", description = "게시글 조회 성공")
     @ApiResponse(responseCode = "404", description = "게시글 조회 실패")
     @GetMapping("/{id}")
-    public ResponseEntity<ApiResponseDTO> getPostInfo(Long id){
+    public ResponseEntity<ApiResponseDTO> getPostInfo(@PathVariable Long id){
         PostResponseDTO postInfo = postService.getPostInfo(id);
         return ResponseEntity.status(HttpStatus.OK).body(ApiResponseDTO.of("게시글 상세 조회 성공", postInfo));
     }
@@ -112,7 +112,7 @@ public class PostAPI {
     public ResponseEntity<ApiResponseDTO> deletePostByMemberId(@PathVariable Long memberId){
 
         postService.deletePostByMemberId(memberId);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(ApiResponseDTO.of("삭제 성공"));
+        return ResponseEntity.status(HttpStatus.OK).body(ApiResponseDTO.of("삭제 성공"));
     }
 
 }

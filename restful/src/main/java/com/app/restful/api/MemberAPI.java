@@ -39,7 +39,7 @@ public class MemberAPI {
     }
 
 //        회원 정보 조회 서비스
-    @Operation(summary = "회원 단일 조회 서비스", description = "회원 조회해서 리스트로 반환하는 서비스")
+//    @Operation(summary = "회원 단일 조회 서비스", description = "회원 조회해서 리스트로 반환하는 서비스")
     @ApiResponse(responseCode = "200", description = "회원 목록 조회 성공")
     @ApiResponse(responseCode = "400", description = "회원 조회 실패")
     @Parameter(

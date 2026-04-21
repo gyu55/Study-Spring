@@ -15,7 +15,6 @@ public class CustomExceptionHandler {
     public ResponseEntity<ApiResponseDTO> exceptionHandler(PostException e){
         return ResponseEntity.status(e.getStatus()).body(ApiResponseDTO.of(e.getMessage()));
     }
-
     @ExceptionHandler(MemberException.class)
     public ResponseEntity<ApiResponseDTO> memberExceptionHandler(MemberException e){
         return ResponseEntity.status(e.getStatus()).body(ApiResponseDTO.of(e.getMessage()));
